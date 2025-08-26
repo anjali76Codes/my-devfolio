@@ -126,6 +126,26 @@
   100% { transform: translateX(100px) translateY(0px); }
 }
 
+@keyframes particle {
+  0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.8; }
+  25% { transform: translateY(-100px) translateX(50px) scale(1.2); opacity: 1; }
+  50% { transform: translateY(-50px) translateX(-30px) scale(0.8); opacity: 0.6; }
+  75% { transform: translateY(-150px) translateX(80px) scale(1.1); opacity: 0.9; }
+  100% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.8; }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes zigzag {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  25% { transform: translateX(50px) translateY(-80px); }
+  50% { transform: translateX(-30px) translateY(-160px); }
+  75% { transform: translateX(70px) translateY(-240px); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -336,6 +356,65 @@
   border-radius: 50%;
   animation-name: floatReverse;
   animation-duration: 22s;
+}
+
+/* Additional floating particles */
+.floating-shape.particle-1 {
+  top: 25%;
+  left: 80%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, hsl(var(--primary)), transparent);
+  border-radius: 50%;
+  animation-name: particle;
+  animation-duration: 15s;
+}
+
+.floating-shape.particle-2 {
+  bottom: 30%;
+  right: 70%;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle, hsl(var(--accent)), transparent);
+  border-radius: 50%;
+  animation-name: particle;
+  animation-duration: 18s;
+  animation-delay: -5s;
+}
+
+.floating-shape.particle-3 {
+  top: 70%;
+  left: 15%;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, hsl(var(--muted)), transparent);
+  border-radius: 50%;
+  animation-name: zigzag;
+  animation-duration: 20s;
+  animation-delay: -8s;
+}
+
+.floating-shape.orbit-1 {
+  top: 40%;
+  left: 30%;
+  width: 10px;
+  height: 10px;
+  background: hsl(var(--primary));
+  border-radius: 50%;
+  animation-name: orbit;
+  animation-duration: 12s;
+}
+
+.floating-shape.orbit-2 {
+  bottom: 40%;
+  right: 40%;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--accent));
+  border-radius: 50%;
+  animation-name: orbit;
+  animation-duration: 16s;
+  animation-direction: reverse;
 }
 
 @layer base {

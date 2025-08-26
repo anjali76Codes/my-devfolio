@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Github, ExternalLink, Calendar, Users, Star, Code } from "lucide-react";
 
 const filterOptions = [
   { id: "all", label: "All Projects" },
@@ -96,6 +97,8 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -147,6 +150,11 @@ export default function Projects() {
       "OpenAI API": "bg-purple-500/10 text-purple-600",
     };
     return colors[tech] || "bg-gray-500/10 text-gray-600";
+  };
+
+  const openProjectModal = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
   };
 
   return (
@@ -257,6 +265,7 @@ export default function Projects() {
                   </span>
                   <Button
                     size="sm"
+                    onClick={() => openProjectModal(project)}
                     className="hover:bg-primary/90 transition-colors duration-200"
                     data-testid={`view-details-${project.id}`}
                   >
@@ -292,6 +301,138 @@ export default function Projects() {
             </a>
           </Button>
         </div>
+
+        {/* Project Detail Modal */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            {selectedProject && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold">
+                    {selectedProject.title}
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <div className="space-y-6">
+                  {/* Project Image */}
+                  <div className="relative">
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                    <div className="absolute top-4 right-4 flex space-x-2">
+                      <Badge variant="secondary" className="bg-black/50 text-white">
+                        {selectedProject.year}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  {/* Project Info Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Card>
+                      <CardContent className="p-4 text-center">
+                        <Calendar className="w-6 h-6 text-primary mx-auto mb-2" />
+                        <h4 className="font-medium text-foreground">Release Date</h4>
+                        <p className="text-sm text-muted-foreground">{selectedProject.year}</p>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card>
+                      <CardContent className="p-4 text-center">
+                        <Code className="w-6 h-6 text-primary mx-auto mb-2" />
+                        <h4 className="font-medium text-foreground">Technologies</h4>
+                        <p className="text-sm text-muted-foreground">{selectedProject.technologies.length} Tech Stack</p>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card>
+                      <CardContent className="p-4 text-center">
+                        <Star className="w-6 h-6 text-primary mx-auto mb-2" />
+                        <h4 className="font-medium text-foreground">Category</h4>
+                        <p className="text-sm text-muted-foreground capitalize">{selectedProject.category.join(", ")}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* Description */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-3">Project Description</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+                  </div>
+
+                  {/* Technologies Used */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-3">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className={`text-sm ${getTechColor(tech)}`}
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Key Features */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-3">Key Features</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-start space-x-2">
+                        <Star className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <span className="text-muted-foreground">Responsive design optimized for all devices</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <Star className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <span className="text-muted-foreground">Modern user interface with smooth animations</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <Star className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <span className="text-muted-foreground">High performance and optimized loading times</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <Star className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <span className="text-muted-foreground">Secure authentication and data protection</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex space-x-4 pt-4">
+                    <Button asChild className="flex-1">
+                      <a
+                        href={selectedProject.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center space-x-2"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>Live Demo</span>
+                      </a>
+                    </Button>
+                    
+                    <Button variant="outline" asChild className="flex-1">
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center space-x-2"
+                      >
+                        <Github className="w-4 h-4" />
+                        <span>View Code</span>
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

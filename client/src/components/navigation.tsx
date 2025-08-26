@@ -45,7 +45,7 @@ export default function Navigation() {
               className="text-xl font-bold gradient-text"
               data-testid="logo-link"
             >
-              AJ
+              AG
             </button>
           </div>
 

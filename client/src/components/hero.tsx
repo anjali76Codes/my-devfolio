@@ -38,7 +38,7 @@ export default function Hero() {
         <div className={`transition-all duration-800 ${isVisible ? "animate-fade-in-up" : ""}`}>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-foreground">Hi, I'm </span>
-            <span className="gradient-text">Alex Johnson</span>
+            <span className="gradient-text">Anjali Gupta</span>
           </h1>
           <p
             className={`text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto transition-all duration-800 delay-200 ${
@@ -108,7 +108,7 @@ export default function Hero() {
               <Twitter className="w-6 h-6" />
             </a>
             <a
-              href="mailto:alex@example.com"
+              href="mailto:anjali@example.com"
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
               data-testid="link-email"
             >

@@ -19,6 +19,11 @@ export default function Home() {
         <div className="floating-shape shape-4"></div>
         <div className="floating-shape shape-5"></div>
         <div className="floating-shape shape-6"></div>
+        <div className="floating-shape particle-1"></div>
+        <div className="floating-shape particle-2"></div>
+        <div className="floating-shape particle-3"></div>
+        <div className="floating-shape orbit-1"></div>
+        <div className="floating-shape orbit-2"></div>
       </div>
 
       <Navigation />

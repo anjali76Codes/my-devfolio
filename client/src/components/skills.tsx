@@ -144,15 +144,21 @@ export default function Skills() {
                   {category.technologies.map((tech, techIndex) => (
                     <div
                       key={tech.name}
-                      className="tech-icon group p-3 bg-muted/50 border border-border rounded-lg hover:bg-accent hover:border-primary transition-all duration-300 animate-pulse-hover"
+                      className="tech-icon group p-3 bg-gradient-to-br from-card to-card/80 border-2 border-border rounded-xl hover:bg-gradient-to-br hover:from-primary/10 hover:to-accent/10 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 animate-pulse-hover relative overflow-hidden"
                       data-testid={`tech-icon-${tech.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                     >
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-300 rounded-xl"></div>
+                      
                       <tech.Icon
-                        className={`text-2xl ${tech.color} group-hover:scale-110 transition-transform duration-300 mx-auto`}
+                        className={`text-3xl ${tech.color} group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-300 mx-auto relative z-10`}
                       />
-                      <p className="text-xs text-center text-muted-foreground mt-2 group-hover:text-foreground transition-colors duration-300">
+                      <p className="text-xs text-center text-muted-foreground mt-2 group-hover:text-foreground group-hover:font-medium transition-all duration-300 relative z-10">
                         {tech.name}
                       </p>
+                      
+                      {/* Animated border on hover */}
+                      <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary/30 group-hover:animate-pulse"></div>
                     </div>
                   ))}
                 </div>

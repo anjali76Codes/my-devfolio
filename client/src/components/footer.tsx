@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-2xl font-bold gradient-text">
-                Alex Johnson
+                Anjali Gupta
               </span>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
@@ -59,7 +59,7 @@ export default function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="mailto:alex@example.com"
+                href="mailto:anjali@example.com"
                 className="text-muted-foreground hover:text-primary transition-colors duration-200"
                 data-testid="footer-link-email"
               >
@@ -107,7 +107,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 Alex Johnson. All rights reserved. Built with React, Tailwind
+            © 2024 Anjali Gupta. All rights reserved. Built with React, Tailwind
             CSS, and lots of ☕
           </p>
         </div>
