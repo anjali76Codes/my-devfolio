@@ -442,24 +442,25 @@
 .section-circle {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.1;
+  opacity: 0.15;
   pointer-events: none;
   z-index: 1;
+  filter: blur(1px);
 }
 
 .section-circle.circle-1 {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)/0.3));
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #3b82f6, #3b82f680);
   top: 20%;
   right: 10%;
   animation: circleMove1 25s infinite ease-in-out;
 }
 
 .section-circle.circle-2 {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent)/0.3));
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #8b5cf6, #8b5cf680);
   bottom: 30%;
   left: 15%;
   animation: circleMove2 20s infinite ease-in-out;
@@ -467,9 +468,9 @@
 }
 
 .section-circle.circle-3 {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, hsl(var(--muted)), hsl(var(--muted)/0.3));
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #10b981, #10b98180);
   top: 60%;
   right: 20%;
   animation: circleMove3 30s infinite ease-in-out;

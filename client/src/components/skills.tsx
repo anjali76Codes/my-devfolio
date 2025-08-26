@@ -30,11 +30,11 @@ const skillCategories = [
     icon: Palette,
     gradient: "from-primary to-purple-600",
     technologies: [
-      { Icon: SiReact, color: "text-blue-500", name: "React" },
-      { Icon: SiNextdotjs, color: "text-black dark:text-white", name: "Next.js" },
+      { Icon: SiReact, color: "text-blue-500", name: "React.js" },
+      { Icon: SiNextdotjs, color: "text-black dark:text-white", name: "Next.js Framework" },
       { Icon: SiTypescript, color: "text-blue-600", name: "TypeScript" },
       { Icon: SiTailwindcss, color: "text-cyan-500", name: "Tailwind CSS" },
-      { Icon: SiJavascript, color: "text-yellow-500", name: "JavaScript" },
+      { Icon: SiJavascript, color: "text-yellow-500", name: "JavaScript ES6+" },
       { Icon: SiHtml5, color: "text-orange-500", name: "HTML5" },
       { Icon: SiCss3, color: "text-blue-500", name: "CSS3" },
     ],
@@ -44,9 +44,9 @@ const skillCategories = [
     icon: Server,
     gradient: "from-green-500 to-blue-600",
     technologies: [
-      { Icon: SiNodedotjs, color: "text-green-500", name: "Node.js" },
-      { Icon: SiExpress, color: "text-gray-600 dark:text-gray-300", name: "Express" },
-      { Icon: SiPython, color: "text-yellow-500", name: "Python" },
+      { Icon: SiNodedotjs, color: "text-green-500", name: "Node.js Runtime" },
+      { Icon: SiExpress, color: "text-gray-600 dark:text-gray-300", name: "Express.js" },
+      { Icon: SiPython, color: "text-yellow-500", name: "Python 3.x" },
       { Icon: SiPostgresql, color: "text-blue-600", name: "PostgreSQL" },
       { Icon: SiMongodb, color: "text-green-600", name: "MongoDB" },
     ],
@@ -56,11 +56,11 @@ const skillCategories = [
     icon: Settings,
     gradient: "from-orange-500 to-red-600",
     technologies: [
-      { Icon: SiAmazon, color: "text-orange-500", name: "AWS" },
-      { Icon: SiDocker, color: "text-blue-600", name: "Docker" },
+      { Icon: SiAmazon, color: "text-orange-500", name: "Amazon AWS" },
+      { Icon: SiDocker, color: "text-blue-600", name: "Docker Containers" },
       { Icon: SiKubernetes, color: "text-blue-500", name: "Kubernetes" },
-      { Icon: SiGit, color: "text-red-500", name: "Git" },
-      { Icon: SiJenkins, color: "text-blue-700", name: "Jenkins" },
+      { Icon: SiGit, color: "text-red-500", name: "Git Version Control" },
+      { Icon: SiJenkins, color: "text-blue-700", name: "Jenkins CI/CD" },
     ],
   },
   {
@@ -68,10 +68,10 @@ const skillCategories = [
     icon: Brain,
     gradient: "from-purple-500 to-pink-600",
     technologies: [
-      { Icon: SiTensorflow, color: "text-orange-500", name: "TensorFlow" },
+      { Icon: SiTensorflow, color: "text-orange-500", name: "TensorFlow ML" },
       { Icon: SiPytorch, color: "text-red-500", name: "PyTorch" },
-      { Icon: SiOpenai, color: "text-green-500", name: "OpenAI" },
-      { Icon: SiPython, color: "text-yellow-500", name: "Python" },
+      { Icon: SiOpenai, color: "text-green-500", name: "OpenAI GPT" },
+      { Icon: SiPython, color: "text-yellow-500", name: "Python ML/AI" },
     ],
   },
 ];
@@ -143,7 +143,7 @@ export default function Skills() {
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                   {category.technologies.map((tech, techIndex) => (
                     <div
                       key={tech.name}
