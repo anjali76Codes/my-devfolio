@@ -28,6 +28,17 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/20 relative overflow-hidden"
     >
+      {/* Moving circles */}
+      <div className="section-circle circle-1"></div>
+      <div className="section-circle circle-2"></div>
+      <div className="section-circle circle-3"></div>
+      <div className="section-circle circle-4"></div>
+      <div className="section-circle circle-5"></div>
+      <div className="section-circle circle-6"></div>
+      <div className="section-circle circle-7"></div>
+      <div className="section-circle circle-8"></div>
+      <div className="section-circle circle-9"></div>
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-primary/10 to-transparent rounded-full animate-pulse"></div>
@@ -38,7 +49,7 @@ export default function Hero() {
         <div className={`transition-all duration-800 ${isVisible ? "animate-fade-in-up" : ""}`}>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-foreground">Hi, I'm </span>
-            <span className="gradient-text">Anjali Gupta</span>
+            <span className="gradient-text text-6xl sm:text-7xl lg:text-8xl">Anjali Gupta</span>
           </h1>
           <p
             className={`text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto transition-all duration-800 delay-200 ${

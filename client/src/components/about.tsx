@@ -32,6 +32,12 @@ export default function About() {
       {/* Moving circles */}
       <div className="section-circle circle-1"></div>
       <div className="section-circle circle-2"></div>
+      <div className="section-circle circle-4"></div>
+      <div className="section-circle circle-5"></div>
+      <div className="section-circle circle-6"></div>
+      <div className="section-circle circle-7"></div>
+      <div className="section-circle circle-8"></div>
+      <div className="section-circle circle-9"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`text-center mb-16 transition-all duration-800 ${
