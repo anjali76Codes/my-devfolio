@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "./theme-provider";
-import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import { useScrollSpy } from "../hooks/use-scroll-spy";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Sun, Moon, Menu } from "lucide-react";

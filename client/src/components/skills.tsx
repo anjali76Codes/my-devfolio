@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Palette, Server, Settings } from "lucide-react";
+import { Palette, Server, Settings, Brain } from "lucide-react";
 import {
   SiReact,
   SiNodedotjs,
@@ -9,6 +8,20 @@ import {
   SiAmazon,
   SiDocker,
   SiGit,
+  SiTypescript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiKubernetes,
+  SiJenkins,
+  SiTensorflow,
+  SiPytorch,
+  SiOpenai,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
 } from "react-icons/si";
 
 const skillCategories = [
@@ -16,46 +29,56 @@ const skillCategories = [
     title: "Frontend Development",
     icon: Palette,
     gradient: "from-primary to-purple-600",
-    skills: [
-      { name: "React/Next.js", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Tailwind CSS", level: 95 },
+    technologies: [
+      { Icon: SiReact, color: "text-blue-500", name: "React" },
+      { Icon: SiNextdotjs, color: "text-black dark:text-white", name: "Next.js" },
+      { Icon: SiTypescript, color: "text-blue-600", name: "TypeScript" },
+      { Icon: SiTailwindcss, color: "text-cyan-500", name: "Tailwind CSS" },
+      { Icon: SiJavascript, color: "text-yellow-500", name: "JavaScript" },
+      { Icon: SiHtml5, color: "text-orange-500", name: "HTML5" },
+      { Icon: SiCss3, color: "text-blue-500", name: "CSS3" },
     ],
   },
   {
     title: "Backend Development",
     icon: Server,
     gradient: "from-green-500 to-blue-600",
-    skills: [
-      { name: "Node.js/Express", level: 88 },
-      { name: "Python/Django", level: 82 },
-      { name: "PostgreSQL/MongoDB", level: 80 },
+    technologies: [
+      { Icon: SiNodedotjs, color: "text-green-500", name: "Node.js" },
+      { Icon: SiExpress, color: "text-gray-600 dark:text-gray-300", name: "Express" },
+      { Icon: SiPython, color: "text-yellow-500", name: "Python" },
+      { Icon: SiPostgresql, color: "text-blue-600", name: "PostgreSQL" },
+      { Icon: SiMongodb, color: "text-green-600", name: "MongoDB" },
     ],
   },
   {
     title: "DevOps & Tools",
     icon: Settings,
     gradient: "from-orange-500 to-red-600",
-    skills: [
-      { name: "AWS/Docker", level: 75 },
-      { name: "Git/GitHub", level: 95 },
-      { name: "CI/CD Pipeline", level: 70 },
+    technologies: [
+      { Icon: SiAmazon, color: "text-orange-500", name: "AWS" },
+      { Icon: SiDocker, color: "text-blue-600", name: "Docker" },
+      { Icon: SiKubernetes, color: "text-blue-500", name: "Kubernetes" },
+      { Icon: SiGit, color: "text-red-500", name: "Git" },
+      { Icon: SiJenkins, color: "text-blue-700", name: "Jenkins" },
+    ],
+  },
+  {
+    title: "AI & Machine Learning",
+    icon: Brain,
+    gradient: "from-purple-500 to-pink-600",
+    technologies: [
+      { Icon: SiTensorflow, color: "text-orange-500", name: "TensorFlow" },
+      { Icon: SiPytorch, color: "text-red-500", name: "PyTorch" },
+      { Icon: SiOpenai, color: "text-green-500", name: "OpenAI" },
+      { Icon: SiPython, color: "text-yellow-500", name: "Python" },
     ],
   },
 ];
 
-const technologies = [
-  { Icon: SiReact, color: "text-blue-500", name: "React" },
-  { Icon: SiNodedotjs, color: "text-green-500", name: "Node.js" },
-  { Icon: SiPython, color: "text-yellow-500", name: "Python" },
-  { Icon: SiAmazon, color: "text-orange-500", name: "AWS" },
-  { Icon: SiDocker, color: "text-blue-600", name: "Docker" },
-  { Icon: SiGit, color: "text-red-500", name: "Git" },
-];
 
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false);
-  const [skillsAnimated, setSkillsAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -63,9 +86,6 @@ export default function Skills() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          if (!skillsAnimated) {
-            setTimeout(() => setSkillsAnimated(true), 500);
-          }
         }
       },
       { threshold: 0.3 }
@@ -76,7 +96,7 @@ export default function Skills() {
     }
 
     return () => observer.disconnect();
-  }, [skillsAnimated]);
+  }, []);
 
   return (
     <section
@@ -100,7 +120,7 @@ export default function Skills() {
         </div>
 
         {/* Tech Stack Categories */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <Card
               key={category.title}
@@ -120,22 +140,19 @@ export default function Skills() {
                   </h3>
                 </div>
 
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name} className="skill-item">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-foreground">
-                          {skill.name}
-                        </span>
-                        <span className="text-sm text-muted-foreground">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <Progress
-                        value={skillsAnimated ? skill.level : 0}
-                        className="h-2"
-                        data-testid={`progress-${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                <div className="grid grid-cols-3 gap-4">
+                  {category.technologies.map((tech, techIndex) => (
+                    <div
+                      key={tech.name}
+                      className="tech-icon group p-3 bg-muted/50 border border-border rounded-lg hover:bg-accent hover:border-primary transition-all duration-300 animate-pulse-hover"
+                      data-testid={`tech-icon-${tech.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                    >
+                      <tech.Icon
+                        className={`text-2xl ${tech.color} group-hover:scale-110 transition-transform duration-300 mx-auto`}
                       />
+                      <p className="text-xs text-center text-muted-foreground mt-2 group-hover:text-foreground transition-colors duration-300">
+                        {tech.name}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -144,29 +161,6 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Technology Icons */}
-        <div
-          className={`transition-all duration-800 delay-600 ${
-            isVisible ? "reveal active" : "reveal"
-          }`}
-        >
-          <h3 className="text-2xl font-semibold text-center text-foreground mb-8">
-            Technologies I Work With
-          </h3>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {technologies.map((tech, index) => (
-              <div
-                key={tech.name}
-                className="tech-icon group p-4 bg-card border border-border rounded-xl hover:bg-accent hover:border-primary transition-all duration-300 animate-pulse-hover"
-                data-testid={`tech-icon-${tech.name.toLowerCase()}`}
-              >
-                <tech.Icon
-                  className={`text-4xl ${tech.color} group-hover:scale-110 transition-transform duration-300`}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
