@@ -146,6 +146,27 @@
   75% { transform: translateX(70px) translateY(-240px); }
 }
 
+@keyframes circleMove1 {
+  0% { transform: translateX(0px) translateY(0px); }
+  25% { transform: translateX(100px) translateY(-50px); }
+  50% { transform: translateX(50px) translateY(-100px); }
+  75% { transform: translateX(-50px) translateY(-50px); }
+  100% { transform: translateX(0px) translateY(0px); }
+}
+
+@keyframes circleMove2 {
+  0% { transform: translateX(0px) translateY(0px); }
+  33% { transform: translateX(-80px) translateY(60px); }
+  66% { transform: translateX(80px) translateY(120px); }
+  100% { transform: translateX(0px) translateY(0px); }
+}
+
+@keyframes circleMove3 {
+  0% { transform: translateX(0px) translateY(0px) scale(1); }
+  50% { transform: translateX(150px) translateY(-80px) scale(1.5); }
+  100% { transform: translateX(0px) translateY(0px) scale(1); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -415,6 +436,44 @@
   animation-name: orbit;
   animation-duration: 16s;
   animation-direction: reverse;
+}
+
+/* Moving circles for each section */
+.section-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-circle.circle-1 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)/0.3));
+  top: 20%;
+  right: 10%;
+  animation: circleMove1 25s infinite ease-in-out;
+}
+
+.section-circle.circle-2 {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent)/0.3));
+  bottom: 30%;
+  left: 15%;
+  animation: circleMove2 20s infinite ease-in-out;
+  animation-delay: -5s;
+}
+
+.section-circle.circle-3 {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, hsl(var(--muted)), hsl(var(--muted)/0.3));
+  top: 60%;
+  right: 20%;
+  animation: circleMove3 30s infinite ease-in-out;
+  animation-delay: -10s;
 }
 
 @layer base {

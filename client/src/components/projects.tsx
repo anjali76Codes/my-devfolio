@@ -161,8 +161,11 @@ export default function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 bg-muted/30 dark:bg-muted/10"
+      className="py-20 bg-muted/30 dark:bg-muted/10 relative overflow-hidden"
     >
+      {/* Moving circles */}
+      <div className="section-circle circle-1"></div>
+      <div className="section-circle circle-3"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`text-center mb-16 transition-all duration-800 ${

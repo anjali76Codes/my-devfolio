@@ -102,8 +102,11 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-20 bg-background dark:bg-background"
+      className="py-20 bg-background dark:bg-background relative overflow-hidden"
     >
+      {/* Moving circles */}
+      <div className="section-circle circle-2"></div>
+      <div className="section-circle circle-3"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`text-center mb-16 transition-all duration-800 ${
@@ -140,7 +143,7 @@ export default function Skills() {
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {category.technologies.map((tech, techIndex) => (
                     <div
                       key={tech.name}
@@ -153,7 +156,7 @@ export default function Skills() {
                       <tech.Icon
                         className={`text-3xl ${tech.color} group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-300 mx-auto relative z-10`}
                       />
-                      <p className="text-xs text-center text-muted-foreground mt-2 group-hover:text-foreground group-hover:font-medium transition-all duration-300 relative z-10">
+                      <p className="text-xs text-center text-muted-foreground mt-2 group-hover:text-foreground group-hover:font-medium transition-all duration-300 relative z-10 truncate">
                         {tech.name}
                       </p>
                       
