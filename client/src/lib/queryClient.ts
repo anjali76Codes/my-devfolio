@@ -7,21 +7,18 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-export async function apiRequest(
-  method: string,
-  url: string,
-  data?: unknown | undefined,
-): Promise<Response> {
-  const res = await fetch(url, {
-    method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
-  });
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
-  await throwIfResNotOk(res);
-  return res;
+export async function apiRequest(method: string, url: string, data?: any) {
+  const response = await fetch(`${API_BASE}${url}`, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    body: data ? JSON.stringify(data) : undefined,
+  });
+  if (!response.ok) throw new Error("API request failed");
+  return response.json();
 }
+
 
 type UnauthorizedBehavior = "returnNull" | "throw";
 export const getQueryFn: <T>(options: {
