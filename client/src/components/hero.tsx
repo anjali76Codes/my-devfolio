@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/20 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/20 relative overflow-hidden px-4"
     >
       {/* Moving circles */}
       <div className="section-circle circle-1"></div>
@@ -45,88 +45,109 @@ export default function Hero() {
         <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-accent/10 to-transparent rounded-full animate-pulse [animation-delay:1s]"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className={`transition-all duration-800 ${isVisible ? "animate-fade-in-up" : ""}`}>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="text-foreground">Hi, I'm </span>
-            <span className="gradient-text text-6xl sm:text-7xl lg:text-8xl">Anjali Gupta</span>
-          </h1>
-          <p
-            className={`text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto transition-all duration-800 delay-200 ${
-              isVisible ? "animate-fade-in-up" : ""
-            }`}
-          >
-            Full Stack Developer & Software Engineer passionate about creating
-            innovative digital solutions
-          </p>
+      <div className="container mx-auto relative z-10 flex flex-col-reverse sm:flex-row items-center justify-center gap-8 sm:gap-20">
+        {/* Text Section */}
+       <div className="text-center sm:text-left max-w-xl pt-20">
+          <div className={`transition-all duration-800 ${isVisible ? "animate-fade-in-up" : "" }`}>
+           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-snug sm:leading-tight">
+  <span className="block text-foreground">Hi, I'm</span>
+  <span className="block text-foreground">Anjali Gupta</span>
+  <span className="block gradient-text text-4xl sm:text-6xl lg:text-8xl mt-4">
+    Anjali Gupta
+  </span>
+</h1>
+
+<p
+  className={`-mt-20 text-base sm:text-xl md:text-xl text-muted-foreground mb-5 transition-all duration-800 delay-200 ${
+    isVisible ? "animate-fade-in-up" : ""
+  } text-left`}
+>
+  Full Stack Developer & Software Engineer passionate about creating
+  innovative digital solutions
+</p>
+
+
+
+            <div
+              className={`flex flex-col sm:flex-row items-center justify-center sm:justify-start space-y-4 sm:space-y-0 sm:space-x-6 transition-all duration-800 delay-400 ${
+                isVisible ? "animate-fade-in-up" : ""
+              }`}
+            >
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("projects")}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transform hover:scale-105 hover:shadow-lg transition-all duration-300"
+                data-testid="button-view-work"
+              >
+                View My Work
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => scrollToSection("contact")}
+                className="border-border text-foreground hover:bg-accent transition-all duration-300"
+                data-testid="button-contact"
+              >
+                Get In Touch
+              </Button>
+            </div>
+          </div>
+
+          {/* Social Links */}
           <div
-            className={`flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 transition-all duration-800 delay-400 ${
+            className={`mt-1 sm:mt-12 transition-all duration-800 delay-600 ${
               isVisible ? "animate-fade-in-up" : ""
             }`}
           >
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("projects")}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transform hover:scale-105 hover:shadow-lg transition-all duration-300"
-              data-testid="button-view-work"
-            >
-              View My Work
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => scrollToSection("contact")}
-              className="border-border text-foreground hover:bg-accent transition-all duration-300"
-              data-testid="button-contact"
-            >
-              Get In Touch
-            </Button>
+            <div className="flex justify-center sm:justify-start space-x-6">
+              <a
+                href="https://github.com/anjali76Codes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
+                data-testid="link-github"
+              >
+                <Github className="w-6 h-6" />
+              </a>
+              <a
+                href="https://linkedin.com/in/anjaligupta76"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
+                data-testid="link-linkedin"
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a
+                href="https://x.com/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
+                data-testid="link-twitter"
+              >
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a
+                href="mailto:anjaligupta92958@gmail.com"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
+                data-testid="link-email"
+              >
+                <Mail className="w-6 h-6" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Social Links */}
-        <div
-          className={`mt-12 transition-all duration-800 delay-600 ${
-            isVisible ? "animate-fade-in-up" : ""
-          }`}
-        >
-          <div className="flex justify-center space-x-6">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
-              data-testid="link-github"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
-              data-testid="link-linkedin"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
-              data-testid="link-twitter"
-            >
-              <Twitter className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:anjali@example.com"
-              className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-110 transform"
-              data-testid="link-email"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
-        </div>
+        {/* Image Section */}
+       {/* Image Section */}
+<div className="w-52 h-52 sm:w-52 sm:h-52 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-green-200 shadow-lg hover:scale-105 transition-transform duration-300 sm:absolute sm:top-20 sm:right-10 z-10">
+  <img
+    src="/images/mee.png"
+    alt="Anjali Gupta"
+    className="w-full h-full object-cover"
+  />
+</div>
+
       </div>
 
       {/* Scroll indicator */}
